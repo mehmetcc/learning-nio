@@ -34,16 +34,4 @@ class FileReaderTest {
         assertThat(result).isNotEmpty()
                 .contains("Lorem ipsum dolor sit amet");
     }
-
-    @Test
-    void write_whenValidStringGivenShouldWriteContentsIntoFile(@TempDir Path directory) throws IOException {
-        Path path = directory.resolve("tmp.txt");
-
-        FileReader.write(path.toString(), "Some content");
-
-        assertThat(Files.exists(path)).isTrue();
-        assertThat(Files.readAllLines(path)).isNotEmpty()
-                .element(0)
-                .isEqualTo("Some content");
-    }
 }
